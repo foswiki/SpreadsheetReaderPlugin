@@ -1,0 +1,11 @@
+*.gz
+*.swp
+attic
+genpdf_*
+/SpreadsheetReaderPlugin_installer
+/SpreadsheetReaderPlugin_installer.pl
+/SpreadsheetReaderPlugin.md5
+/SpreadsheetReaderPlugin.sha1
+/SpreadsheetReaderPlugin.tgz
+/SpreadsheetReaderPlugin.txt
+/SpreadsheetReaderPlugin.zip

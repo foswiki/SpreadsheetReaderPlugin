@@ -1,0 +1,58 @@
+%META:TOPICINFO{author="micha" comment="reprev" date="1523967068" format="1.1" reprev="2" version="4"}%
+---+!! %TOPIC%
+%FORMFIELD{"Description"}%
+
+%TOC%
+
+This plugin can read common spreadsheet documents and renders them as HTML. Supported file formats are:
+
+   * xls
+   * xlsx
+   * ods
+   * csv
+
+---++ Examples
+
+<verbatim class="tml">
+%SPREADSHEET{"test.xlsx" sheet="2"}%
+</verbatim>
+
+---++ Syntax
+
+The =%SPREADHSHEET{...}%= makro takes the following parameters:
+
+| *Parameter* | *Description* | *Default* |
+| ="..."= or =attachment="..."= | file name of an uploaded spreadsheet file | | 
+| =web="..."=, =topic="..."= | location of the spreadsheet file | current topic |
+| =password="..."= | password to unlock a protected spreadsheet | |
+| =sep="..."= | (only csv) column separator for csv files | |
+| =quote="..."= | (only csv) quote character for cells in a csv files | |
+| =sheets="..."= or =sheet="..."= | sheets to extract (1-based); this may a single sheet or a comma separated list of sheets, or the keyword =all= | 1 |
+| =rows="..."= | list of rows to extract data from; this is either a comma separated list of row numbers, or the keyword =all" | all |
+| =cols="..."= | list of columns to extract data from; this is either a comma separated list of column numbers, or the keyword =all" | all |
+| =class="..."= | css class to add to the HTML table being rendered | =foswikiTable= |
+| =showattrs="on/off"= | boolean switch to extract cell attributes such as bold, italic, foreground- and background colors, alignment; set this to =off= to get the raw HTML table only; \
+                     note that this currently only works reliably for =xls= and =xlsx= files | on |
+| =showindex="on/off"= | boolean switch to display a row index | off |
+
+---++ Installation Instructions
+%$INSTALL_INSTRUCTIONS%
+
+---++ Dependencies
+%$DEPENDENCIES%
+
+---++ Change History
+
+%TABLE{columnwidths="7em" tablewidth="100%"}%
+|  17 Apr 2018 | initial release |
+
+%META:FORM{name="PackageForm"}%
+%META:FIELD{name="Author" title="Author" value="Michael Daum"}%
+%META:FIELD{name="Version" title="Version" value="%25$VERSION%25"}%
+%META:FIELD{name="Release" title="Release" value="%25$RELEASE%25"}%
+%META:FIELD{name="Description" title="Description" value="%25$SHORTDESCRIPTION%25"}%
+%META:FIELD{name="Repository" title="Repository" value="https://github.com/foswiki/%25TOPIC%25"}%
+%META:FIELD{name="Copyright" title="Copyright" value="2016 Michael Daum http://michaeldaumconsulting.com"}%
+%META:FIELD{name="License" title="License" value="GPL ([[http://www.gnu.org/copyleft/gpl.html][GNU General Public License]])"}%
+%META:FIELD{name="Home" title="Home" value="https://foswiki.org/Extensions/%25TOPIC%25"}%
+%META:FIELD{name="Support" title="Support" value="https://foswiki.org/Support/%25TOPIC%25"}%

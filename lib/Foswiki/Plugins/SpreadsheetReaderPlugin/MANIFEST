@@ -1,0 +1,5 @@
+!noci
+data/System/SpreadsheetReaderPlugin.txt 0644
+lib/Foswiki/Plugins/SpreadsheetReaderPlugin/Core.pm 0644
+lib/Foswiki/Plugins/SpreadsheetReaderPlugin/DEPENDENCIES 0644
+lib/Foswiki/Plugins/SpreadsheetReaderPlugin.pm 0644

@@ -1,0 +1,5 @@
+Spreadsheet::Read,>=0.78,cpan,Required
+Spreadsheet::ReadSXC,>=0.20,cpan,Required
+Spreadsheet::ParseExcel,>=0.65,cpan,Required
+Spreadsheet::ParseXLSX,>=0.27,cpan,Required
+Text::CSV_XS,>=1.35,cpan,Required
