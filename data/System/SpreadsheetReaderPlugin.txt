@@ -1,4 +1,4 @@
-%META:TOPICINFO{author="ProjectContributor" comment="" date="1523967308" format="1.1"  version="1"}%
+%META:TOPICINFO{author="ProjectContributor" comment="" date="1527503538" format="1.1" version="1"}%
 ---+!! %TOPIC%
 %FORMFIELD{"Description"}%
 
@@ -26,14 +26,53 @@ The =%SPREADHSHEET{...}%= makro takes the following parameters:
 | =web="..."=, =topic="..."= | location of the spreadsheet file | current topic |
 | =password="..."= | password to unlock a protected spreadsheet | |
 | =sep="..."= | (only csv) column separator for csv files | |
+| =strip="on/off"= | boolean flag to strip whitespaces of a cell content | on |
 | =quote="..."= | (only csv) quote character for cells in a csv files | |
 | =sheets="..."= or =sheet="..."= | sheets to extract (1-based); this may a single sheet or a comma separated list of sheets, or the keyword =all= | 1 |
-| =rows="..."= | list of rows to extract data from; this is either a comma separated list of row numbers, or the keyword =all" | all |
-| =cols="..."= | list of columns to extract data from; this is either a comma separated list of column numbers, or the keyword =all" | all |
+| =rows="..."= | list of rows to extract data from; this may be a comma separated list of row numbers, a list of row intervals (see explanation below), or the keyword =all" | all |
+| =cols="..."= | list of columns to extract data from; this is either a comma separated list of column numbers or letters, a list of column intervals, or the keyword =all" | all |
 | =class="..."= | css class to add to the HTML table being rendered | =foswikiTable= |
 | =showattrs="on/off"= | boolean switch to extract cell attributes such as bold, italic, foreground- and background colors, alignment; set this to =off= to get the raw HTML table only; \
                      note that this currently only works reliably for =xls= and =xlsx= files | on |
 | =showindex="on/off"= | boolean switch to display a row index | off |
+| =&lt;headerName_include="..."= | regular expression a column must match for the row to be included in the output (see explanation below) | |
+| =&lt;headerName_exclude="..."= | regular expression a column must _not_ match for the row to be included in the output | |
+
+---++ Rows and column intervals
+The rows and columns to be displayed may be specified using a list of intervals such as
+
+<verbatim>rows="1,2,5-9,12"</verbatim>
+
+This will select rows 1,2,5,6,7,8,9 and 12.
+
+Similarly columns may be specified using an interval description of 
+uppercase alphabetic letters such as in
+
+<verbatim>cols="-F,K-"</verbatim>
+
+This will select all columns except columns G, H, I, J.
+
+An interval of rows (or columns) can be either a closed interval starting at a specific row up to an ending row,
+or be a half-open interval such as =cols="K-"= which will select all columns from =K= on, or =rows=-10= to list
+the first ten rows.
+
+---++ Filtering rows
+
+The two parameters =&lt;headerName_include="..."= and =&lt;headerName_exclude="..."= may be used to filter rows by regular expressions.
+
+Example:
+
+<verbatim class="tml">
+%SPREADSHEET{
+  "calculation.xls"
+  ITSystems_include="foswiki"
+}%
+</verbatim>
+
+This will list only those rows where the value of the row "IT-Systems" matches the given expression. Note that the actual parameter
+to depict the column to be checked is generated from the first line of the spreadsheet which is considered to be the header line.
+To please the attribute parser specification of TML, parameter names are normalized to a certain degree stripping off any non-alpabetic non-numeric
+characters. That's why the parameter is callded =ITSystems_include= when reading values of the "IT-Systems" column.
 
 ---++ Installation Instructions
 %$INSTALL_INSTRUCTIONS%
@@ -44,6 +83,7 @@ The =%SPREADHSHEET{...}%= makro takes the following parameters:
 ---++ Change History
 
 %TABLE{columnwidths="7em" tablewidth="100%"}%
+|  28 May 2018 | fix encoding of spreadsheets; implement row and column range syntax |
 |  17 Apr 2018 | initial release |
 
 %META:FORM{name="PackageForm"}%
