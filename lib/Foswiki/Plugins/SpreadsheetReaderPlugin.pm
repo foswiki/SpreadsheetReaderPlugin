@@ -20,8 +20,8 @@ use warnings;
 
 use Foswiki::Func ();
 
-our $VERSION = '1.00';
-our $RELEASE = '15 Apr 2018';
+our $VERSION = '1.10';
+our $RELEASE = '28 May 2018';
 our $SHORTDESCRIPTION = 'Read data from a spreadsheet';
 our $NO_PREFS_IN_TOPIC = 1;
 our $core;
@@ -40,7 +40,6 @@ sub getCore {
   }
   return $core;
 }
-
 
 sub finishPlugin {
   undef $core;
