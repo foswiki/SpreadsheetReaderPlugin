@@ -137,14 +137,14 @@ sub SPREADSHEET {
 
         my $val = $sheet->cell($key);
         $val = Encode::decode($enc, $val) if defined $enc;
-        $val =~ s/^\s+|\s+//g if $theStrip;
+        $val =~ s/^\s+|\s+$//g if $theStrip;
 
         my $type = $attr->{type} || '';
         #_writeDebug(dump($attr));
         my $align = $attr->{halign};
-        $align = "right" if !defined $align && $type eq "numeric";
+        $align = "right" if !defined($align) && $type eq "numeric";
 
-        _writeDebug("$key=$val, type=$type, enc=" . ($enc // 'undef').", align=$align");
+        #_writeDebug("$key=$val, type=$type, enc=" . ($enc // 'undef').", align=$align");
 
         my $styles = "";
         if ($theShowAttrs) {
